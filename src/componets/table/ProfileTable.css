@@ -1,0 +1,38 @@
+
+.container .search{
+
+    top:6px;
+    left:10px;
+}
+
+.container .form-control{
+
+    border:none;
+    padding-left:32px;
+}
+
+.container .form-control:focus{
+
+    border:none;
+    box-shadow:none;
+}
+
+.container .green{
+
+    color:green;
+}
+.container .red{
+    color: red;
+}
+.container .mte-5{
+    margin-top: 1rem !important;
+}
+.container .update{
+
+    display: flex;
+}
+.select {
+    border-radius: 20px;
+    text-align: center;
+    box-sizing: unset;
+}
