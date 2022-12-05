@@ -27,7 +27,7 @@ const ModalClient = ({show, setShow, client, setClient, setShutdown, setShowTick
 
         function save() {
 
-
+            console.log("HEllo")
             console.log(client)
 
             clientSave(client).then((item) => {

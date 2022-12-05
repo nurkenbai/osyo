@@ -33,14 +33,14 @@ const Login = () => {
                 localStorage.setItem(md5('role'), md5(item.date?.role))
                 localStorage.setItem(md5('token'), item.date?.accessToken)
                 toast.success('Successful')
-                window.location.reload();
+                // window.location.reload();
             } else {
                 toast.warning(item.message)
             }
         }).catch((eror) => {
             console.log(eror)
             toast.error('Server ERROR')
-            navigation('/error')
+
         })
 
         // +998990000000
@@ -67,9 +67,9 @@ const Login = () => {
                 <div className="Auth-form-content">
                     <h3 className="Auth-form-title">Sign In</h3>
                     <div className="form-group mt-3">
-                        <label>Email address</label>
+                        <label>Username</label>
                         <input
-                            type="email"
+                            type="text"
                             className="form-control mt-1"
                             placeholder="Enter username"
                             value={name.username}
@@ -87,13 +87,11 @@ const Login = () => {
                         />
                     </div>
                     <div className="d-grid gap-2 mt-3">
-                        <button type="submit" className="btn btn-primary" onClick={loginClick}>
+                        <button  className="btn btn-primary" onClick={loginClick}>
                             Submit
                         </button>
                     </div>
-                    <p className="forgot-password text-right mt-2">
-                        Forgot <a href="./Login#">password?</a>
-                    </p>
+
                 </div>
             </form>
         </div>

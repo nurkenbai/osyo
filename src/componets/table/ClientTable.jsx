@@ -60,15 +60,19 @@ const ClientTable = ({
                 <div className="position-relative">
                     <span className="position-absolute search"><i className="fa fa-search"></i></span>
                     <input className="form-control w-100" value={search} onChange={(e) => {
-                        setShutdown(true)
                         setSearch(e.target.value)
+                        setShutdown(true)
                     }} placeholder="Search by order#, name..."/>
                 </div>
 
                 <div className="px-2">
-                    <select className="select" onChange={(e) => setFilialId(e.target.value)} name="cars" id="cars">
+                    <select className="select" onChange={(e) => {
 
-                        <option value='{item.key}'>Tanlang...</option>
+                        setFilialId(e.target.value)
+                        setShutdown(true)
+                    }} name="cars" id="cars">
+
+                        <option value={null}>Tanlang...</option>
                         {filial.map((item, index) => {
                             return (<option value={item.id}> {item.name}</option>)
                         })

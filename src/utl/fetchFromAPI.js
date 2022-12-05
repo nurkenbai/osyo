@@ -1,7 +1,8 @@
 import axios from "axios";
 import md5 from "md5";
 // https://mbs-edu.herokuapp.com
-const BASE_URL = `http://5.180.182.235:8080`;
+const BASE_URL = `http://192.168.0.127:8080`;
+// const BASE_URL = `http://osiyo-back.mbs-edu.uz/`;
 // let BASE_URL = `https://mbs-edu.herokuapp.com;`
 export const BASEURL = `${BASE_URL}/api/v1/attach/open/`;
 export const loginAPi = async (datas) => {

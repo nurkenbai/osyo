@@ -55,7 +55,8 @@ const Filial = () => {
 
                 </div>
             </div>
-            <ModalFilial show={show} setShow={setShow} filial={update} setFilial={setUpdate} setShutdown={setShutdown}/>
+            {show ? <ModalFilial show={show} setShow={setShow} filial={update} setFilial={setUpdate} setShutdown={setShutdown}/>:null}
+
         </main>
     );
 };

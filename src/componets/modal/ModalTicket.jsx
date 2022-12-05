@@ -45,18 +45,7 @@ const ModalTicket = ({show, setShow, update, setUpdate, setClient, setShowTicket
 
 
     const handleClose = () => {
-        const newProfile = {
-            name: '',
-            airPlane: '',
-            seat: '',
-            fromCountry: '',
-            toCountry: '',
-            airplaneType: 'BUSINESS',
-            endTime: '',
-            flightTime: '',
-            flightList: []
 
-        }
 
 
         setShowTicket(false)
@@ -65,8 +54,10 @@ const ModalTicket = ({show, setShow, update, setUpdate, setClient, setShowTicket
 
     function save() {
 
-        console.log(ticket)
+
         setClient({...client, ticket: ticket})
+
+
         setShow(true)
         setShowTicket(false)
     }
@@ -83,6 +74,8 @@ const ModalTicket = ({show, setShow, update, setUpdate, setClient, setShowTicket
             setOptionsUpdate({value: '', name: 'Tanlang'})
             setUpdates(undefined)
             setFlightList([...flightList, {name: ''}])
+
+            setFlightLists([...flightList, {name: ''}])
             setStatus(flightList.length)
         }
     }
@@ -92,13 +85,14 @@ const ModalTicket = ({show, setShow, update, setUpdate, setClient, setShowTicket
         const {id, value} = e.target;
 
         const list = [...flightList];
-        const lists = [...flightList];
+        const lists = [...flightLists];
         list[ids]['name'] = value;
         setFlightList(list)
         lists[ids]['id'] = ids;
         lists[ids]['name'] = value;
         setFlightLists(lists)
-
+        console.log("HESALOm")
+        console.log(flightLists)
         console.log(flightList)
         setTicket({...ticket, flightList: flightList})
     }
@@ -106,16 +100,14 @@ const ModalTicket = ({show, setShow, update, setUpdate, setClient, setShowTicket
     function onUpdate() {
 
         setClient({...client, ticket: ticket})
+
         setShow(true)
         setShowTicket(false)
     }
 
 
     function setOpen(e) {
-        console.log("hi")
-        console.log(e.target.value)
-        console.log(flightList)
-        console.log(flightLists)
+
         flightLists.map((item, index) => {
             if (item.name === e.target.value) {
 
@@ -123,8 +115,7 @@ const ModalTicket = ({show, setShow, update, setUpdate, setClient, setShowTicket
             }
 
         })
-        console.log("Hello")
-        console.log(updates)
+
 
     }
 
@@ -284,7 +275,7 @@ const ModalTicket = ({show, setShow, update, setUpdate, setClient, setShowTicket
                                     </div>
                                 </div>
                                 <div style={{padding: '0 5px 10px 5px'}} className="col-6">
-                                    {flightList.map((item, index) => {
+                                    {flightLists.map((item, index) => {
 
                                         if (index === status && !updates) {
                                             return (

@@ -28,7 +28,7 @@ const Profile = ({optionals, optionalList}) => {
             toast.error('Server ERROR')
         });
 
-
+        setShutdown(false)
     }, [optional, shutdown]);
 
     if (!profiles) return <Loading/>
@@ -52,8 +52,9 @@ const Profile = ({optionals, optionalList}) => {
 
                 </div>
             </div>
-            <ModalProfile show={show} setShow={setShow} setUpdate={setUpdate} update={update}
-                          setShutdown={setShutdown} current={optionals}/>
+            {show ? <ModalProfile show={show} setShow={setShow} setUpdate={setUpdate} update={update}
+                                  setShutdown={setShutdown} optionals={optionals}/>:null}
+
         </main>
     );
 };

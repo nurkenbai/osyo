@@ -9,7 +9,7 @@ const Navbar = ({sidebarOpen, openSidebar}) => {
     const logout = () => {
         localStorage.clear();
         navigation('/')
-        window.location.reload();
+
     };
     return (
         <nav className="navbars">

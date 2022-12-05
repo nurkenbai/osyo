@@ -6,7 +6,7 @@ import {toast} from "react-toastify";
 import md5 from "md5";
 
 
-const ModalProfile = ({show, setShow, current, update, setUpdate, setShutdown}) => {
+const ModalProfile = ({show, setShow, optionals, update, setUpdate, setShutdown}) => {
     const [filial, setFilial] = useState([]);
     const [choose, setСhoose] = useState('Tanlang');
     const [profile, setProfile] = useState({
@@ -14,7 +14,7 @@ const ModalProfile = ({show, setShow, current, update, setUpdate, setShutdown}) 
         fullName: '',
         password: '',
         phone: '',
-        role: current,
+        role: optionals,
         filialId: ''
 
     })
@@ -38,16 +38,8 @@ const ModalProfile = ({show, setShow, current, update, setUpdate, setShutdown}) 
     }, [])
 
     const handleClose = () => {
-        const newProfile = {
-            username: '',
-            fullName: '',
-            password: '',
-            phone: '',
-            role: current,
-            filialId: ''
 
-        }
-        setUpdate(newProfile)
+
         setShow(false)
     };
 
@@ -60,13 +52,14 @@ const ModalProfile = ({show, setShow, current, update, setUpdate, setShutdown}) 
             console.log(profile)
             if (!item.isError) {
                 toast.success(item.message)
-
+                setShutdown(true)
             } else {
                 toast.warning(item.message)
             }
         }).catch((error) => {
             toast.error("Server ERROR")
         })
+
         setShutdown(true)
         setShow(false);
     }
@@ -156,7 +149,7 @@ const ModalProfile = ({show, setShow, current, update, setUpdate, setShutdown}) 
                                 onChange={(e) => setProfile({...profile, password: e.target.value})}
                             />
                         </Form.Group>
-                        <Form.Group className="mb-2">
+                        {optionals !== "ROLE_MANAGER" ? <Form.Group className="mb-2">
                             <Form.Label>Organization filial</Form.Label>
                             <select onChange={(e) => {
 
@@ -173,7 +166,7 @@ const ModalProfile = ({show, setShow, current, update, setUpdate, setShutdown}) 
 
                                 })}
                             </select>
-                        </Form.Group>
+                        </Form.Group> : null}
 
 
                     </Form>

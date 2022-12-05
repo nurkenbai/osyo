@@ -7,7 +7,7 @@ import {toast} from "react-toastify";
 import ModalTicket from "../modal/ModalTicket";
 import ClientPagination from "../paginations/ClientPagination";
 import ModalInfo from "../modal/ModalInfo"
-import {useNavigate, useNavigation} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 const Client = ({optionals, filialIds}) => {
@@ -24,7 +24,7 @@ const Client = ({optionals, filialIds}) => {
     const [totalPages, setTotalPages] = useState();
 
     const [client, setClient] = useState({
-        id:'',
+        id: '',
         name: '',
         surname: '',
         phone: '',
@@ -43,8 +43,9 @@ const Client = ({optionals, filialIds}) => {
 
 
     useEffect(() => {
-
-        getClient({text: search, filialId: filialId}, currentPage, 10)
+        console.log(search)
+        console.log(filialId)
+        getClient({text: search, filialId: filialId !== 'Tanlang...' ? filialId : null}, currentPage, 10)
             .then((item) => {
 
                 console.log(item)
@@ -57,7 +58,7 @@ const Client = ({optionals, filialIds}) => {
             });
 
         setShutdown(false)
-    }, [shutdown]);
+    }, [shutdown, search]);
 
     if (!clients) return <Loading/>
 
@@ -75,19 +76,22 @@ const Client = ({optionals, filialIds}) => {
                     </div>
                     <ClientTable clientTable={clients?.date?.dtoList} setUpdate={setClient}
                                  optionals={optionals} setShow={setShow} setShowInfo={setShowInfo}
-                                 setShutdown={setShutdown} setSearch={setSearch} search={search} setFilialId={setFilialId}/>
+                                 setShutdown={setShutdown} setSearch={setSearch} search={search}
+                                 setFilialId={setFilialId}/>
                     <div className="page-item row">
                         <ClientPagination setCurrentPage={setCurrentPage} totalPages={totalPages}/>
                     </div>
                 </div>
             </div>
-            <ModalClient show={show} setShow={setShow} setClient={setClient} client={client}
-                         setShutdown={setShutdown} setShowTicket={setShowTicket}
-                         setUpdateTicket={setUpdateTicket}/>
+            {show ? <ModalClient show={show} setShow={setShow} setClient={setClient} client={client}
+                                 setShutdown={setShutdown} setShowTicket={setShowTicket}
+                                 setUpdateTicket={setUpdateTicket}/> : null}
 
-            <ModalTicket show={showTicket} setShow={setShow} setUpdate={setUpdateTicket} update={updateTicket}
-                         setClient={setClient} setShowTicket={setShowTicket} client={client}/>
-            <ModalInfo show={showInfo} setShow={setShowInfo} setClient={setClient} client={client}/>
+            {showTicket ?
+                <ModalTicket show={showTicket} setShow={setShow} setUpdate={setUpdateTicket} update={updateTicket}
+                             setClient={setClient} setShowTicket={setShowTicket} client={client}/> : null}
+            {showInfo ? <ModalInfo show={showInfo} setShow={setShowInfo} setClient={setClient} client={client}/> : null}
+
         </main>
     );
 };
