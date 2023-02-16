@@ -33,7 +33,7 @@ const Login = () => {
                 localStorage.setItem(md5('role'), md5(item.date?.role))
                 localStorage.setItem(md5('token'), item.date?.accessToken)
                 toast.success('Successful')
-                // window.location.reload();
+                window.location.reload();
             } else {
                 toast.warning(item.message)
             }
@@ -69,7 +69,7 @@ const Login = () => {
                     <div className="form-group mt-3">
                         <label>Username</label>
                         <input
-                            type="text"
+                            type="email"
                             className="form-control mt-1"
                             placeholder="Enter username"
                             value={name.username}
@@ -80,7 +80,7 @@ const Login = () => {
                         <label>Password</label>
                         <input
                             type="password"
-                            className="form-control mt-1"
+                            className="form-control mt-2"
                             placeholder="Enter password"
                             value={name.password}
                             onChange={e => setName({...name, password: e.target.value})}

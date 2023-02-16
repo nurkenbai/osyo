@@ -5,9 +5,6 @@ import Profile from "./profile/Profile";
 import Filial from "./filial/Filial";
 import {categoriesSuperAdmin, optionalsSupeAdmin} from "../utl/Componet";
 import Client from "./client/Client";
-import ToastrNotification from "./tostar/ToastrNotification";
-import {ToastContainer} from "react-toastify";
-import error500 from "./error/500";
 import Error500 from "./error/500";
 
 const SuperAdmin = () => {
@@ -15,7 +12,6 @@ const SuperAdmin = () => {
 
 
 
-    const profile = localStorage.getItem('role')
 
 
     const openSidebar = () => {
@@ -24,6 +20,7 @@ const SuperAdmin = () => {
     const closeSidebar = () => {
         setSidebarOpen(false)
     }
+    console.log("Hello admin")
     return (
         <>
             <div className="containers">
@@ -32,7 +29,7 @@ const SuperAdmin = () => {
                     <Routes>
                         <Route exact path="/" element={<Main/>}/>
                         <Route path="/profile"
-                               element={<Profile  optionals={"ROLE_ADMIN"}
+                               element={<Profile optionals={"ROLE_ADMIN"}
                                                  optionalList={optionalsSupeAdmin}/>}/>
                         <Route path="/filial" element={<Filial/>}/>
                         <Route path="/client" element={<Client/>}/>

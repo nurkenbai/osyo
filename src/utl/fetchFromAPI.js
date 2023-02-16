@@ -1,8 +1,7 @@
 import axios from "axios";
 import md5 from "md5";
 // https://mbs-edu.herokuapp.com
-const BASE_URL = `http://192.168.0.127:8080`;
-// const BASE_URL = `http://osiyo-back.mbs-edu.uz/`;
+const BASE_URL = `http://178.218.207.96:8080`;
 // let BASE_URL = `https://mbs-edu.herokuapp.com;`
 export const BASEURL = `${BASE_URL}/api/v1/attach/open/`;
 export const loginAPi = async (datas) => {
@@ -165,7 +164,7 @@ export const filialUpdate = async (body, id) => {
 export const getFilial = async () => {
 
     const token = localStorage.getItem(md5('token'))
-
+    console.log("keldi"+BASE_URL)
 
     const header = {
         headers: {

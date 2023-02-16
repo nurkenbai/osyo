@@ -10,7 +10,7 @@ import ModalInfo from "../modal/ModalInfo"
 import {useNavigate} from "react-router-dom";
 
 
-const Client = ({optionals, filialIds}) => {
+const Client = ({optionals, filialIds,role}) => {
 
     const navigation = useNavigate();
     const [show, setShow] = useState(false);
@@ -72,8 +72,10 @@ const Client = ({optionals, filialIds}) => {
                 <h1>{selectCategory}</h1>
                 <div className="table-add">
                     <div className="buttons">
+                    {role==="ROLE_MANAGER" ? (
                         <button onClick={(openModal)} className="btn btn-primary">ADD</button>
-                    </div>
+                    ):null}
+                        </div>
                     <ClientTable clientTable={clients?.date?.dtoList} setUpdate={setClient}
                                  optionals={optionals} setShow={setShow} setShowInfo={setShowInfo}
                                  setShutdown={setShutdown} setSearch={setSearch} search={search}

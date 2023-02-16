@@ -9,7 +9,7 @@ import {useNavigate} from "react-router-dom";
 const Filial = () => {
     const navigation = useNavigate();
     const [show, setShow] = useState(false);
-    const [shutdown, setShutdown] = useState();
+    const [shutdown, setShutdown] = useState(false);
 
     const [filials, setFilials] = useState();
     const [update, setUpdate] = useState();
@@ -18,7 +18,7 @@ const Filial = () => {
         setShow(true);
     }
     const closeModal = () => setShow(false);
-
+    console.log("HELLO")
     useEffect(() => {
         getFilial()
             .then((item) => {
@@ -30,7 +30,7 @@ const Filial = () => {
             })
             .catch((error) => {
                 toast.error("SERVER ERROR")
-                navigation('/error')
+                // navigation('/error')
             });
         setShutdown(false)
     }, [shutdown])

@@ -18,7 +18,6 @@ const Main = () => {
             }
 
         }).catch((error) => {
-            console.log(error)
             toast.error("Server ERROR")
             navigation('/error')
 

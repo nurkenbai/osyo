@@ -23,7 +23,7 @@ const Manager = () => {
             <BrowserRouter>
                 <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar}/>
                 <Routes>
-                    <Route exact path="/" element={<Client/>}/>
+                    <Route exact path="/" element={<Client role="ROLE_MANAGER"/>}/>
 
                     <Route path="/error" element={<Error500/>}/>
                 </Routes>

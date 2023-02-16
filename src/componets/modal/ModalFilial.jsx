@@ -8,9 +8,9 @@ const ModalFilial = ({show, setShow, filial, setFilial, setShutdown}) => {
 
 
     const [filials, setFilials] = useState({
-        id: '',
-        name: '',
-        status: 'NOT_ACTIVE'
+        id: filial?.id ? "" : filial?.id,
+        name: filial?.name ? "" : filial?.name,
+        status: filial?.status ? 'NOT_ACTIVE' : filial?.status
     });
 
     useEffect(() => {
@@ -23,16 +23,8 @@ const ModalFilial = ({show, setShow, filial, setFilial, setShutdown}) => {
 
     const handleClose = () => {
 
-        const newFilial = {
-            name: '',
-            id: '',
 
-            createdDate: '',
-
-            status: 'NOT_ACTIVE'
-        }
-        setFilial(newFilial)
-
+        setShutdown(true)
 
         setShow(false);
 
@@ -103,12 +95,12 @@ const ModalFilial = ({show, setShow, filial, setFilial, setShutdown}) => {
                             <Form.Check
                                 type="checkbox"
 
-                                checked={filials.status === 'NOT_ACTIVE' ? false : true}
+                                checked={filials.status === 'NOT_ACTIVE'}
                                 name="status"
                                 value={filials.status === 'NOT_ACTIVE' ? "ACTIVE" : 'NOT_ACTIVE'}
 
                                 onChange={(t) => {
-
+                                    console.log(t.target.value)
                                     setFilials({...filials, status: t.target.value})
                                 }}/>
                         </Form.Group>

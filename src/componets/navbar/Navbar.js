@@ -9,6 +9,7 @@ const Navbar = ({sidebarOpen, openSidebar}) => {
     const logout = () => {
         localStorage.clear();
         navigation('/')
+        window.location.reload();
 
     };
     return (
@@ -21,15 +22,11 @@ const Navbar = ({sidebarOpen, openSidebar}) => {
 
             </div>
             <div className="navbar__right">
-                <div>
-                    <i className="fa fa-search"></i>
-                </div>
+
                 <div onClick={logout}>
                     <i className="fa fa-power-off"></i>
                 </div>
-                <div>
-                    <img width="30" src={avatar} alt="avatar"/>
-                </div>
+
             </div>
         </nav>
     );

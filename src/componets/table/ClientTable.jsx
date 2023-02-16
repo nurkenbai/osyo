@@ -95,7 +95,7 @@ const ClientTable = ({
                         <th scope="col" width="10%">Surname</th>
                         <th scope="col" width="10%">Phone</th>
 
-                        <th scope="col" width="10%">Pris</th>
+                        <th scope="col" width="10%">Price</th>
                         <th scope="col" width="10%">Gender</th>
                         <th scope="col" width="10%">Info</th>
 

@@ -21,9 +21,10 @@ const ProfileTable = ({
             .then((item) => {
                 if (item) {
                     toast.success("Successful")
-
+                    setShutdown(true)
                 } else {
                     toast.warning("Not Successful")
+                    setShutdown(true)
 
                 }
             })
@@ -31,12 +32,12 @@ const ProfileTable = ({
                 toast.error("Server error")
 
             })
-        setShutdown(true)
+
     }
     const onUpdate = (item) => {
 
         setUpdate(item);
-        setShow(true)
+        setShutdown(true)
 
     }
     return (
@@ -83,7 +84,7 @@ const ProfileTable = ({
                                 <td>{item.fullName}
                                 </td>
                                 <td>{item.phone} </td>
-                                <td>{item.filialId} </td>
+                                <td>{item.filialName} </td>
                                 <td>
                                     {item.role === 'ROLE_ADMIN' ? "Admin" : "Manager"}
                                 </td>
